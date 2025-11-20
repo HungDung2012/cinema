@@ -84,16 +84,15 @@ public class NhanVienDao extends DAO {
                 ps.setString(7, nv.getSdt());
                 
                 ps.executeUpdate();
-                if(ps.executeUpdate() == 0) {
-                    return false;
-                }
 
                 try (ResultSet key = ps.getGeneratedKeys()) {
                     if (key.next()) {
                         maNhanVien = key.getInt(1);
-                    } else {
-                        return false;
-                    }
+                    } 
+                } catch (SQLException e){
+                    System.err.println("Loi khi lay ma nhan vien: " + e.getMessage());
+                    e.printStackTrace();
+                    return false;
                 }
             }
             String sqlQuanLy = "";

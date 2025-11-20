@@ -44,8 +44,7 @@
             .register-link {
                 display: block;
                 text-align: center;
-                margin-top: 15px;
-                padding: 10px;
+                padding: 20px;
                 text-decoration: none;
                 color: black;
                 font-size: 16px;
@@ -98,6 +97,18 @@
             </script>
         <%
                 session.removeAttribute("errorMessage");
+            }
+        %>
+
+        <% 
+            String successMessage = (String) session.getAttribute("successMessage");
+            if (successMessage != null) {
+        %>
+            <script>
+                alert("<%= successMessage %>");
+            </script>
+        <%
+                session.removeAttribute("successMessage");
             }
         %>
     </body>

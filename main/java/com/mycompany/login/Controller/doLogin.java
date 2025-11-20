@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.login.DAO.Controller;
+package com.mycompany.login.Controller;
 
 import com.mycompany.login.DAO.NhanVienDao;
 import com.mycompany.login.Model.NhanVien;
