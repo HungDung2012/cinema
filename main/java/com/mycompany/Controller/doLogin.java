@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.login.Controller;
+package com.mycompany.Controller;
 
-import com.mycompany.login.DAO.NhanVienDao;
-import com.mycompany.login.Model.NhanVien;
+import com.mycompany.DAO.NhanVienDao;
+import com.mycompany.Model.NhanVien;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -40,7 +40,7 @@ public class doLogin extends HttpServlet{
             }
         } catch (SQLException e){
             resp.sendRedirect(req.getContextPath() + "/Dangnhap.jsp");
-            System.err.println("Loi switch case dang nhap: " + e.getMessage());
+            System.err.println("Loi switch case dang nhap, dang ki: " + e.getMessage());
             e.printStackTrace();
         }
     }

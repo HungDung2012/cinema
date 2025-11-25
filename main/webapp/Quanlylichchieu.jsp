@@ -55,8 +55,8 @@
                 return;
             }
             
-            com.mycompany.login.Model.NhanVien nv = 
-                (com.mycompany.login.Model.NhanVien) session.getAttribute("nhanVien");
+            com.mycompany.Model.NhanVien nv = 
+                (com.mycompany.Model.NhanVien) session.getAttribute("nhanVien");
         %>
 
         <div class="container">
@@ -85,12 +85,22 @@
                 </a>
             </div>
             
-            <div>
-                <a href="${pageContext.request.contextPath}/Laplichchieuphim.jsp">
-                    <button type="submit" class="submit-btn">Lập Lịch Chiếu Phim</button>
-                </a>
+            <div method="post" action="${pageContext.request.contextPath}/addschedule-pre">
+                <button type="submit" class="submit-btn">Lập Lịch Chiếu Phim</button>
             </div>
 
         </div>
+
+        <% 
+            String errorMessage = (String) session.getAttribute("errorMessage");
+            if (errorMessage != null) {
+        %>
+            <script>
+                alert("<%= errorMessage %>");
+            </script>
+        <%
+                session.removeAttribute("errorMessage");
+            }
+        %>
     </body>
 </html>

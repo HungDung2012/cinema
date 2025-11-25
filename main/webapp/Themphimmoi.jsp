@@ -33,9 +33,9 @@
                 box-sizing: border-box;
             }
             .submit-btn {
-                width: 100%;
+                width: 45%;
                 padding: 20px;
-                margin-bottom: 20px;
+                margin: 3px;
             }
         </style>
     </head>
@@ -89,7 +89,10 @@
                         required
                     ></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Thêm Phim</button>
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">Thêm</button>
+                    <button type="button" class="submit-btn" onclick="window.location.href='${pageContext.request.contextPath}/Quanlyphim.jsp'">Hủy</button>
+                </div>
             </form>
         </div>
 

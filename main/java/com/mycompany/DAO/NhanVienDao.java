@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.login.DAO;
+package com.mycompany.DAO;
 
-import com.mycompany.login.Model.NhanVien;
-import com.mycompany.login.Model.NhanVienQuanLy;
-import com.mycompany.login.Model.NhanVienQuayVe;
+import com.mycompany.Model.NhanVien;
+import com.mycompany.Model.NhanVienQuanLy;
+import com.mycompany.Model.NhanVienQuayVe;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -60,9 +60,12 @@ public class NhanVienDao extends DAO {
                         }
                     }
                 }
-            } 
+            } catch(SQLException e){
+                System.err.println("loi truy cap csdl dang nhap: " + e.getMessage());
+                e.printStackTrace();
+            }
         }catch (SQLException e) {
-            System.err.println("Lỗi khi đăng nhập: " + e.getMessage());
+            System.err.println("loi chuan bi truy cap csdl dang nhap: " + e.getMessage());
             e.printStackTrace();
         }
         return null;
@@ -114,7 +117,7 @@ public class NhanVienDao extends DAO {
             
         }
         catch (SQLException e){
-            System.err.println("Loi khi dang ki: " + e.getMessage());
+            System.err.println("Loi truy cap csdl dang ki: " + e.getMessage());
             e.printStackTrace();
             return false;
         }

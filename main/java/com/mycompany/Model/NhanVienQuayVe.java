@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.login.Model;
+package com.mycompany.Model;
 
 import java.sql.Date;
 
@@ -10,10 +10,11 @@ import java.sql.Date;
  *
  * @author admin
  */
-public class NhanVienQuanLy extends NhanVien {
-    private int maNhanVien; 
+public class NhanVienQuayVe extends NhanVien {
+    private int maNhanVien;
     private String viTri;
-    public NhanVienQuanLy(int id, String tenDangNhap, String matKhau, String hoTen, Date ngaySinh, String diaChi, String email, String sdt, int maNhanVien, String viTri) {
+
+    public NhanVienQuayVe(int id, String tenDangNhap, String matKhau, String hoTen, Date ngaySinh, String diaChi, String email, String sdt, int maNhanVien, String viTri) {
         super(id, tenDangNhap, matKhau, hoTen, ngaySinh, diaChi, email, sdt);
         this.maNhanVien = id;
         this.viTri = viTri;
@@ -31,9 +32,8 @@ public class NhanVienQuanLy extends NhanVien {
         this.viTri = viTri;
     }
 
-    @Override
+     @Override
     public String getViTri() {
         return this.viTri; 
     }
-    
 }

@@ -56,8 +56,8 @@
                 return;
             }
             
-            com.mycompany.login.Model.NhanVien nv = 
-                (com.mycompany.login.Model.NhanVien) session.getAttribute("nhanVien");
+            com.mycompany.Model.NhanVien nv = 
+                (com.mycompany.Model.NhanVien) session.getAttribute("nhanVien");
         %>
         
         <div class="container">
@@ -82,7 +82,7 @@
 
             <%
                 String viTri = nv.getViTri();
-                if (viTri != null && viTri.contains("Quầy Vé")) {
+                if (viTri != null && viTri.contains("Nhân Viên Quầy Vé")) {
             %>
                 <div>
                     <a href="${pageContext.request.contextPath}/Banvetaiquay.jsp">
