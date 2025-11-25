@@ -115,4 +115,39 @@ public class PhimDao extends DAO {
         }
         return danhSachPhim;
     }
+    
+    public List<Phim> timKiemPhim(String keyword) {
+        List<Phim> danhSachPhim = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM tblPhim WHERE tenPhim LIKE ? OR theLoai LIKE ? OR moTa LIKE ? ORDER BY maPhim ASC";
+            try (PreparedStatement ps = con.prepareStatement(sql)){
+                String searchPattern = "%" + keyword + "%";
+                ps.setString(1, searchPattern);
+                ps.setString(2, searchPattern);
+                ps.setString(3, searchPattern);
+                
+                try (ResultSet rs = ps.executeQuery()) {
+                    while(rs.next()) {
+                        int maPhim = rs.getInt("maPhim");
+                        String tenPhim = rs.getString("tenPhim");
+                        String theLoai = rs.getString("theLoai");
+                        int thoiLuong = rs.getInt("thoiLuong");
+                        String moTa = rs.getString("moTa");
+                        
+                        danhSachPhim.add(new Phim(maPhim, tenPhim, theLoai, thoiLuong, moTa));
+                    }
+                } catch (SQLException e) {
+                    System.err.println("Loi 1 tim kiem phim: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            } catch (SQLException e) {
+                System.err.println("Loi 2 tim kiem phim: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.err.println("Loi tim kiem phim: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return danhSachPhim;
+    }
 }

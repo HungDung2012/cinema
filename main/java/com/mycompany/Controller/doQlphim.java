@@ -22,8 +22,8 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(urlPatterns = {"/addmovie-submit", "/gettt-submit", "/edit-movie", "/delete-movie"})
-public class doThemphimmoi extends HttpServlet{
+@WebServlet(urlPatterns = {"/addmovie-submit", "/gettt-submit", "/edit-movie", "/delete-movie", "/search-movie"})
+public class doQlphim extends HttpServlet{
     private PhimDao pDao;
     @Override
     public void init(){
@@ -46,6 +46,9 @@ public class doThemphimmoi extends HttpServlet{
                     break;
                 case "/delete-movie":
                     deleteMovie(req, resp);
+                    break;
+                case "/search-movie":
+                    searchMovie(req, resp);
                     break;
             }
         } catch (Exception e) {
@@ -124,5 +127,19 @@ public class doThemphimmoi extends HttpServlet{
             resp.sendRedirect(req.getContextPath() + "/Xemthongtinphim.jsp");
             return;
         }
+    }
+    
+    private void searchMovie(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String keyword = req.getParameter("keyword");
+        
+        if (keyword == null || keyword.trim().isEmpty()) {
+            List<Phim> danhSachPhim = pDao.getDanhsachphim();
+            req.getSession().setAttribute("danhSachPhim", danhSachPhim);
+        } else {
+            List<Phim> danhSachPhim = pDao.timKiemPhim(keyword.trim());
+            req.getSession().setAttribute("danhSachPhim", danhSachPhim);
+        }
+        
+        resp.sendRedirect(req.getContextPath() + "/Xemthongtinphim.jsp");
     }
 }

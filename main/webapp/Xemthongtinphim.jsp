@@ -62,9 +62,32 @@
             .empty-message {
                 text-align: center;
                 padding: 40px;
-                color: #666;
                 font-size: 18px;
             }
+            .search-box {
+                margin-bottom: 20px;
+                display: flex;
+                gap: 10px;
+            }
+            #searchInput {
+                flex: 1;
+                padding: 12px 20px;
+                font-size: 16px;
+                border: 2px solid #ddd;
+                border-radius: 4px;
+                box-sizing: border-box;
+                transition: border-color 0.3s;
+            }
+            .search-btn {
+                padding: 12px 30px;
+                color: black;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s;
+            }
+            
         </style>
     </head>
     <body>
@@ -79,6 +102,11 @@
 
         <div class="container">
             <h1>Danh Sách Phim</h1>
+            
+            <form method="post" action="${pageContext.request.contextPath}/search-movie" class="search-box">
+                <input type="text" name="keyword" id="searchInput" placeholder="Tìm kiếm phim theo tên, thể loại..." value="<%= request.getParameter("keyword") != null ? request.getParameter("keyword") : "" %>">
+                <button type="submit" class="search-btn">Tìm kiếm</button>
+            </form>
             
             <% if (danhSachPhim != null && !danhSachPhim.isEmpty()) { %>
                 <table>
